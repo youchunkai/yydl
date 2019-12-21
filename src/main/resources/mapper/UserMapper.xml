@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.sso.mapper.UserMapper">
+
+    <resultMap id="user" type="com.test.sso.entity.po.User">
+        <id column="US_CODE" property="usCode"/>
+        <result column="US_NAME" property="usName"/>
+        <result column="US_LNNM" property="usLnnm"/>
+        <result column="US_LNPW" property="password"/>
+        <result column="PICURL" property="picUrl"/>
+        <result column="US_TEL" property="usTel"/>
+        <result column="ORG_CODE" property="orgCode"/>
+        <result column="GRD_CODE" property="grdCode"/>
+        <result column="GRD_NAME" property="grdName"/>
+        <result column="PST_CODE" property="pstCode"/>
+        <result column="PST_NAME" property="pstName"/>
+        <result column="DISTRICT_CODE" property="districtCode"/>
+        <result column="DISTRICT_NAME" property="districtName"/>
+    </resultMap>
+
+    <select id="selectUserByLoginName" parameterType="HashMap" resultMap="user">
+        select us_code,us_name,us_lnnm,us_lnpw,picurl,us.us_tel,us.org_code,
+               grd_code,grd_name,zw.pst_code,zw.pst_name,xz.district_code,xz.district_name
+        from  psdb.ps_user us,xadb.grd_inf grd,psdb.ps_position zw,xadb.cmn_district xz
+        where us.org_code = grd.org_code(+)
+        and   us.pst_code = zw.pst_code(+)
+        and   us.district_code = xz.district_code(+)
+        and   us.us_lnnm = 'xian'
+        and   us.user_status = '1'
+    </select>
+
+
+
+
+</mapper>

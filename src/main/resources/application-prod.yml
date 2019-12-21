@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:oracle:thin:@10.16.146.69:1521:orcl
+    username: xadb
+    password: abc123
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    initialSize: 2
+    minIdle: 1
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+    useGlobalDataSourceStat: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+logging:
+  config:
+    classpath: logback.xml
