@@ -6,7 +6,6 @@ import com.test.sso.entity.vo.ResponseCode;
 import com.test.sso.entity.vo.ResponseVO;
 import com.test.sso.utils.ExceptionProcessorUtils;
 import com.test.sso.utils.JwtTokenUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
